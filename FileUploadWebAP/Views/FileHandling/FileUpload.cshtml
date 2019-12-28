@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "FileUpload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>FileUpload</h1>
+
+@*<form enctype="multipart/form-data" method="post" action="UploadOneFileAsync">*@
+@*<form enctype="multipart/form-data" method="post">*@
+<form enctype="multipart/form-data" method="post" action="/api/Values">
+    <input name="file" type="file">
+    <br />
+    <input class="btn" type="submit" value="Upload" />
+</form>
