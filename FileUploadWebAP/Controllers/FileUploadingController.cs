@@ -25,7 +25,6 @@ namespace FileUploadWebAP.Controllers
         public IActionResult Get(string id)
         {
             FileInfo fileInfo = fileUploader.GetFile(id);
-            MediaTypeHeaderValue mediaTypeHeaderValue = new MediaTypeHeaderValue("application/octet-stream");
             return File(fileInfo.FileStream, "application/octet-stream", fileInfo.FileName);
         }
 

@@ -112,7 +112,7 @@ namespace FileUploadWebAP.libs.FilesSaver
             BlobContainerClient container = blobServiceClient.GetBlobContainerClient(ContainerName);
             //CloudBlockBlob blob = container.GetBlockBlobReference("DSC03409.jpg");
             BlobClient blobClient = container.GetBlobClient($"{fileInfo.FileName}.{fileInfo.Token}");
-            await blobClient.UploadAsync(fileInfo.FileStream);
+            await blobClient.UploadAsync(fileInfo.FileStream).ConfigureAwait(true);
         }
 
         public static async Task<Stream> GetBlob(FileInfo fileInfo)
@@ -121,7 +121,7 @@ namespace FileUploadWebAP.libs.FilesSaver
             BlobServiceClient blobServiceClient = new BlobServiceClient(StorageConnectionString);
             BlobContainerClient container = blobServiceClient.GetBlobContainerClient(ContainerName);
             BlobClient blobClient = container.GetBlobClient($"{fileInfo.FileName}.{fileInfo.Token}");
-            BlobDownloadInfo download = await blobClient.DownloadAsync();
+            BlobDownloadInfo download = await blobClient.DownloadAsync().ConfigureAwait(true);
 
             return download.Content;
         }
