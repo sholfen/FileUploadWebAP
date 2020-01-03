@@ -27,7 +27,7 @@ namespace FileUploadWebAP
 
             //string key = Configuration.GetSection("aaaa3").Get<string>();
             Helpers.Utilities.Configuration = Configuration;
-            Type uploaderType = libs.FilesSaver.UploaderFactory.CreateFileUploader(libs.FilesSaver.FileUploaderType.LocalFile, Configuration);
+            Type uploaderType = libs.FilesSaver.UploaderFactory.CreateFileUploader(libs.FilesSaver.FileUploaderType.AzureStorage, Configuration);
             services.AddTransient(typeof(libs.FilesSaver.IFileUploader), uploaderType);
         }
 
